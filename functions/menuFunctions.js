@@ -1,6 +1,7 @@
 var prompt = require('prompt-sync')();
+const tickets = [];
+const trajets = [];
 function menu(){
-  const tickets = [];
   let choix;
   do {
     console.log("==========================================");
