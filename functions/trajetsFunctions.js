@@ -188,14 +188,6 @@ function AfficherLesTrajets(trajets){
     console.log("Départ : "+ trajets[i].departureTime );
     console.log("Arrivée : "+ trajets[i].arrivalTime );
     console.log("Prix : "+ trajets[i].price );
-    console.log("Places disponibles : "+ trajets[i].availableSeats );  
-    
+    console.log("Places disponibles : "+ trajets[i].availableSeats );
   }
 }
-AfficherLesTrajets(trajets);
-
-/*#1 Safi → Youssoufia 
-Départ : 08:00 
-Arrivée : 09:00 
-Prix : 25 DH 
-Places disponibles : 50 */
