@@ -208,7 +208,7 @@ function AcheterUnTicket(trajets,tickets){
   let ticket = {
   id: id_ticket++ , 
   passengerName:NomDePassager , 
-  tripId: trajet.id, 
+  tripId: trajet.departure + "---->" + trajet.destination, 
   seatNumber: trajet.availableSeats, 
   price: trajet.price
   }
@@ -218,4 +218,15 @@ function AcheterUnTicket(trajets,tickets){
   console.log("votre ticket est : ");
   console.log(ticket);
 }
+function AfficherLesTickets(tickets){
+  for(let i = 0 ;i < tickets.length ; i++){
+    if(tickets[i] !== 0 ){
+      console.log("les tickets sont : ");
+      console.log(tickets[i]);
+    }
+  }
+  console.log("Aucun ticket enregistré.");
+}
+
+
 
