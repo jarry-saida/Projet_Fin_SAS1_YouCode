@@ -290,7 +290,15 @@ function AfficherLesTickets(tickets){
     console.log("----------------------");
   }
 }
-
+function RechercherLeTicket(tickets){
+  let Id_Ticket = Number(prompt("Entrer identifiant du ticket : "));
+  for (let i = 0 ; i <trajets.length ;i++){
+    if(Id_Ticket === tickets[i].id){
+      return tickets[i] ;
+    }
+  }
+  return null;
+}
 function AnnulerUnTicket(){
 
 }
