@@ -211,7 +211,7 @@ function menu(){
         AnnulerUnTicket(tickets,trajets);
         break;
       case 5:
-        RechercherUnTicket(tickets);  
+        RechercherUnTicket(tickets,trajets);  
         break;
       case 6:
         FiltrerLesTrajets(); 
@@ -320,7 +320,7 @@ function AnnulerUnTicket(tickets,trajets){
     }
   }
 }
-function RechercherUnTicket(tickets){
+function RechercherUnTicket(tickets,trajets){
   let Nom = prompt("Entrer votre nom : ");
   let trouve = false;
   for(let i = 0;i < tickets.length; i++){
@@ -329,7 +329,11 @@ function RechercherUnTicket(tickets){
       console.log("votre ticket est :");
       console.log("Ticket #" + tickets[i].id);
       console.log("Passager : " + tickets[i].passengerName);
-      console.log("Trajet : " + tickets[i].trajet);
+      for(let j = 0; j < trajets.length; j++){
+        if(tickets[i].tripId === trajets[j].id){
+          console.log("Trajet : " + trajets[j].departure + " ----> " + trajets[j].destination);
+        }
+      }
       console.log("Place : " + tickets[i].seatNumber);
       console.log("Prix : " + tickets[i].price);
       console.log("----------------------");
@@ -339,7 +343,4 @@ function RechercherUnTicket(tickets){
    console.log("Aucun ticket trouvé.");
   }
 }
-
-
-
 menu();
