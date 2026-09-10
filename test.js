@@ -211,7 +211,7 @@ function menu(){
         AnnulerUnTicket(tickets,trajets);
         break;
       case 5:
-        RechercherUnTicket();  
+        RechercherUnTicket(tickets);  
         break;
       case 6:
         FiltrerLesTrajets(); 
@@ -258,9 +258,7 @@ function AcheterUnTicket(trajets,tickets){
   if(trajet === null){
     console.log("Trajet introuvable.");
     return;
-  }else{
-    console.log("le trajet existe .")
-  }
+  }else
   if(trajet.availableSeats === 0 ){
     console.log("le train est complet !");
     return;
@@ -288,12 +286,12 @@ function AfficherLesTickets(tickets){
     console.log("Passager : " + tickets[i].passengerName);
     console.log("Trajet : " + tickets[i].departure + "----> " + tickets[i].destination);
     console.log("Place : " + tickets[i].seatNumber);
-    console.log("Prix : " + tickets[i].price);
+    console.log("Prix : " + tickets[i].price + " DH");
     console.log("----------------------");
   }
 }
 let Id_Ticket ;
-function RechercherLeTicket(tickets){
+function TicketExiste(tickets){
   Id_Ticket = Number(prompt("Entrer identifiant du ticket : "));
   for (let i = 0 ; i <tickets.length ;i++){
     if(Id_Ticket === tickets[i].id){
@@ -303,7 +301,7 @@ function RechercherLeTicket(tickets){
   return null;
 }
 function AnnulerUnTicket(tickets,trajets){
-  let ticket = RechercherLeTicket(tickets);
+  let ticket = TicketExiste(tickets);
   if(ticket === null){
     console.log("le ticket introuvable !");
     return;
@@ -320,6 +318,25 @@ function AnnulerUnTicket(tickets,trajets){
       console.log("Ticket annulé avec succès.")
       return;
     }
+  }
+}
+function RechercherUnTicket(tickets){
+  let Nom = prompt("Entrer votre nom : ");
+  let trouve = false;
+  for(let i = 0;i < tickets.length; i++){
+    if(tickets[i].passengerName === Nom){
+      trouve = true;
+      console.log("votre ticket est :");
+      console.log("Ticket #" + tickets[i].id);
+      console.log("Passager : " + tickets[i].passengerName);
+      console.log("Trajet : " + tickets[i].trajet);
+      console.log("Place : " + tickets[i].seatNumber);
+      console.log("Prix : " + tickets[i].price);
+      console.log("----------------------");
+    }
+  }
+  if(trouve === false){
+   console.log("Aucun ticket trouvé.");
   }
 }
 
