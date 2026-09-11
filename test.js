@@ -214,19 +214,22 @@ function menu(){
         RechercherUnTicket(tickets,trajets);  
         break;
       case 6:
-        FiltrerLesTrajets(); 
+        FiltrerLesTrajets(trajets); 
         break;
       case 7:
-        TrierLesTrajets();
+        TrierLesTrajets(sortTrajets);
+        break;
+      case 8:
+        Statistiques();
         break;
       case 0:
         console.log("Au revoir !");
         break;
       default:
-        console.log("Erreur : veuillez entrer une valeur entre 0 et 7.");
+        console.log("Erreur : veuillez entrer une valeur entre 0 et 8.");
         break;
-    }
-  } while (choix !== 0);
+     }
+  } while (choix !== 0 );
 }
 
 
@@ -343,4 +346,53 @@ function RechercherUnTicket(tickets,trajets){
    console.log("Aucun ticket trouvé.");
   }
 }
+function FiltrerLesTrajets(trajets){
+  let ville = prompt("entrer ville de depart :");
+  for(let i = 0 ; i < trajets.length ; i++){
+    if(trajets[i].departure === ville){
+      console.log(ville + " -----> " + trajets[i].destination + " :" + trajets[i].price + " DH");
+    }
+  }
+}
+let sortTrajets = trajets ;
+function TrierLesTrajets(sortTrajets){
+  let c ;
+  for(let i = 0 ; i < sortTrajets.length ; i++){
+    c = 0;
+    for(let j = 0 ; j < sortTrajets.length - 1 - i; j++){
+        if(sortTrajets[j].price > sortTrajets[j+1].price){
+        let swap = sortTrajets[j];
+        sortTrajets[j] = sortTrajets[j+1];
+        sortTrajets[j+1] = swap;
+        c = 1;
+      }
+    }
+    if(c === 0){
+      return sortTrajets ;
+    }
+  }
+
+}
+/*bonus
+console.log("le nombre de tickets vendus est :" + tickets.length);
+let ChiffreAffairesTotal = 0;
+ChiffreAffairesTotal += ticket.price;
+console.log("Chiffre d'affaires total :"+ChiffreAffairesTotal+" DH" )
+
+for(let i=1 ; i<trajets.length; i++){
+  let maxTickets = tickets[0].availableSeats;
+  if(tickets[i].availableSeats > maxTickets){
+    maxTickets = tickets[i].availableSeats;
+    console.log("Trajet le plus vendu : ");
+    for(let j = 0; j < trajets.length; j++){
+      if(tickets[i].tripId === trajets[j].id){
+        console.log(trajets[j].departure + " ----> " + trajets[j].destination);
+      }
+    }
+    if(seatNumber === id)
+      tickets[i].tripId === trajets[j].id
+    let nombreDeTickets = tickets.
+    console.log( +"tickets vendus"); 
+  }
+}*/
 menu();
