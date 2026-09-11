@@ -195,6 +195,7 @@ function menu(){
     console.log("5. Rechercher un ticket ");
     console.log("6. Filtrer les trajets ");
     console.log("7. Trier les trajets ");
+    console.log("8. Statistiques ");
     console.log("0. Quitter ");
     choix= Number(prompt("Tapez votre choix : "));
     switch (choix) {
@@ -231,8 +232,6 @@ function menu(){
      }
   } while (choix !== 0 );
 }
-
-
 function AfficherLesTrajets(trajets){
   console.log("Les trajets sont :");
   for(let i=0; i < trajets.length ; i++){
@@ -245,7 +244,9 @@ function AfficherLesTrajets(trajets){
 }
 let Id_Trajet;
 function TrajetExiste(trajets){
-  Id_Trajet = Number(prompt("Entrer identifiant du trajet : "));
+  do{
+    Id_Trajet = Number(prompt("Entrer identifiant du trajet : "));
+  }while(isNaN(Id_Trajet));
   for (let i = 0 ; i <trajets.length ;i++){
     if(Id_Trajet === trajets[i].id){
       return trajets[i] ;
@@ -255,8 +256,11 @@ function TrajetExiste(trajets){
 }
 let id_ticket = 1 ;
 let ticket ;
+let NomDePassager;
 function AcheterUnTicket(trajets,tickets){
-  let NomDePassager = prompt("Entrer votre nom : ");
+  do{
+  NomDePassager = prompt("Entrer votre nom : ");
+  }while(!isNaN(NomDePassager))
   let trajet = TrajetExiste(trajets);
   if(trajet === null){
     console.log("Trajet introuvable.");
@@ -408,7 +412,30 @@ function TrajetLePlusVendu(trajets,tickets){
 
 
 function Statistiques(){
-  
-
+  let choix1 ;
+  do{
+    console.log("1. Nombre total de tickets vendus  ");
+    console.log("2. Chiffre d'affaires total  ");
+    console.log("3. Trajet le plus vendu  ");
+    console.log("4. menu ");
+    choix1= Number(prompt("Tapez votre choix : "));
+    switch (choix1) {
+      case 1:
+        nombreDeTicketsVendus(tickets);
+        break;
+      case 2:
+        ChiffreAffairesTotale(tickets);
+        break;
+      case 3:
+        TrajetLePlusVendu(trajets,tickets);
+        break;
+      case 4:
+        console.log("return a menu principale .");
+        break;
+      default:
+        console.log("Erreur : veuillez entrer une valeur entre 0 et 4.");
+      break;
+    }
+  }while(isNaN(choix1)  || choix1 !== 4);
 }
 menu();
