@@ -373,6 +373,9 @@ function TrierLesTrajets(sortTrajets){
   }
 
 }
+function Statistiques(){
+  
+}
 /*bonus
 console.log("le nombre de tickets vendus est :" + tickets.length);
 let ChiffreAffairesTotal = 0;
