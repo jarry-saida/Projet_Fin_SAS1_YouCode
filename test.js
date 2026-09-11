@@ -373,29 +373,42 @@ function TrierLesTrajets(sortTrajets){
   }
 
 }
+let Nombre;
+function nombreDeTicketsVendus(tickets){
+  Nombre = tickets.length;
+  console.log("le nombre de tickets vendus est :" + Nombre);
+  return Nombre;
+}
+function ChiffreAffairesTotale(tickets){
+  let ChiffreAffairesTotal = 0;
+  for(let i = 0 ; i < tickets.length ; i++){
+    ChiffreAffairesTotal += tickets[i].price;
+  }
+  console.log("Chiffre d'affaires total :" + ChiffreAffairesTotal + " DH" );
+  return ChiffreAffairesTotal;
+}
+function TrajetLePlusVendu(trajets,tickets){
+  for(let i=1 ; i<trajets.length; i++){
+    let maxTickets = tickets[0].availableSeats;
+    if(tickets[i].availableSeats > maxTickets){
+      maxTickets = tickets[i].availableSeats;
+      console.log("Trajet le plus vendu : ");
+      for(let j = 0; j < trajets.length; j++){
+        if(tickets[i].tripId === trajets[j].id){
+          console.log(trajets[j].departure + " ----> " + trajets[j].destination);
+        }
+      }
+      if(seatNumber === id)
+        tickets[i].tripId === trajets[j].id
+      let nombreDeTickets = tickets.
+      console.log( +"tickets vendus"); 
+    }
+  } 
+}
+
+
 function Statistiques(){
   
-}
-/*bonus
-console.log("le nombre de tickets vendus est :" + tickets.length);
-let ChiffreAffairesTotal = 0;
-ChiffreAffairesTotal += ticket.price;
-console.log("Chiffre d'affaires total :"+ChiffreAffairesTotal+" DH" )
 
-for(let i=1 ; i<trajets.length; i++){
-  let maxTickets = tickets[0].availableSeats;
-  if(tickets[i].availableSeats > maxTickets){
-    maxTickets = tickets[i].availableSeats;
-    console.log("Trajet le plus vendu : ");
-    for(let j = 0; j < trajets.length; j++){
-      if(tickets[i].tripId === trajets[j].id){
-        console.log(trajets[j].departure + " ----> " + trajets[j].destination);
-      }
-    }
-    if(seatNumber === id)
-      tickets[i].tripId === trajets[j].id
-    let nombreDeTickets = tickets.
-    console.log( +"tickets vendus"); 
-  }
-}*/
+}
 menu();
