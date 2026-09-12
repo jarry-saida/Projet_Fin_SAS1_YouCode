@@ -231,10 +231,10 @@ function menu(){
         console.log("Erreur : veuillez entrer une valeur entre 0 et 8.");
         break;
      }
-  } while (choix !== 0 || isNaN(choix));
+  } while (choix !== 0);
 }
 function AfficherLesTrajets(trajets){
-  console.log("Les trajets sont :");
+  console.log("=== TRAJETS DISPONIBLES ===");
   for(let i=0; i < trajets.length ; i++){
     console.log("#"+trajets[i].id +" " + trajets[i].departure + " ---> " + trajets[i].destination);
     console.log("Départ : "+ trajets[i].departureTime );
@@ -271,11 +271,19 @@ function AcheterUnTicket(trajets,tickets){
     console.log("le train est complet !");
     return;
   }
+  let numeroPlace = 1;
+  for(let i = 0; i < tickets.length; i++){
+    if(tickets[i].tripId === trajet.id){
+      if(tickets[i].seatNumber >= numeroPlace){
+        numeroPlace = tickets[i].seatNumber + 1;
+      }
+    }
+  }
   ticket = {
   id: id_ticket++ , 
   passengerName: NomDePassager , 
   tripId: Id_Trajet, 
-  seatNumber: 51 - trajet.availableSeats, 
+  seatNumber: numeroPlace, 
   price: trajet.price
   }
   tickets.push(ticket);
@@ -320,7 +328,7 @@ function AnnulerUnTicket(tickets,trajets){
     if(trajets[i].id === ticket.tripId ){
       trajets[i].availableSeats++;
       for(let j = 0;j < tickets.length ;j++){
-        if(trajets[j].id === ticket.id){
+        if(tickets[j].id === ticket.id){
           tickets.splice(j,1);
           break;
         }
@@ -430,5 +438,3 @@ function Statistiques(){
   }while(isNaN(choix1)  || choix1 !== 4);
 }
 menu();
-
-
